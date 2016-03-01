@@ -240,10 +240,12 @@ console.assert(safe.unlock(rightKey) === sensitive);
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 var Validator = function () {
 	this.email = function (inputEmail) {
-		if (inputEmail === email ) {
-			return true 
+		for (var i = 0; i < inputEmail.length; i++) {
+			if (inputEmail[i] === "@") {
+				return true 
+			}
 		}
-		return false 
+		return false	
 	}
 }
 
