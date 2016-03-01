@@ -20,6 +20,23 @@
 ////                                                             ////
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
+var Robot = function (inputName) {
+	this.name = inputName
+    this.batteryLevel = 100
+    this.chargeBatteryLevel = function(inputAmount) {
+        if (this.batteryLevel < 100) {
+    	this.batteryLevel += inputAmount
+        }
+    }
+    this.greet = function () {
+    	if (this.batteryLevel > 0) {
+        this.batteryLevel -= 25
+        return "Hello humon, my name is " + this.name
+        }
+        return "Batter dead, need to charge"
+    }
+}
+
 
 /////////////////////////////////////////////////////////////////////
 
@@ -30,7 +47,10 @@
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
+var Foo = function() {
+}
 
+var foo = new Foo()
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
@@ -50,7 +70,9 @@ console.assert(foo instanceof Foo);
 // `says` and the value should be `life is ruff`
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
-
+var Dog = function() {
+	this.says = "life is ruff"
+}
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
@@ -71,7 +93,13 @@ console.assert(new Dog().says === "life is ruff");
 // create an instance of this called `cat`
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
+var Cat = function() {
+	this.growl = function () {
+		return "meow"
+	}
+}
 
+var cat = new Cat() 
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
@@ -96,7 +124,13 @@ console.assert(cat.growl() === "meow");
 // student will gain. In short, make the following assertions pass:
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
-
+var Student = function (inputExpertise) {
+	this.expertise = inputExpertise 
+	this.knowledge = 0 
+	this.learn = function(inputKnowledgeAmount) {
+		this.knowledge += inputKnowledgeAmount
+	}
+}
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
@@ -125,7 +159,12 @@ console.assert(jasper.knowledge === 101)
 // prototype that is called `squeal` that returns the secret string.
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
-
+var KeepSecret = function (inputSecret) {
+	var secret = inputSecret
+	this.squeal = function() {
+		return secret 
+	}
+}
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
@@ -154,8 +193,17 @@ console.assert(dontTellNobody.squeal() === mySecret);
 // the secret data.
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
-
-
+var Key = function () {
+}
+var Safe = function (dataToKeepSafe, keyInstance) {
+	var keepSafe = dataToKeepSafe
+	var keyInstanceSecret = keyInstance
+	this.unlock = function(inputKey) {
+		if (inputKey === keyInstance) {
+			return keepSafe 
+		}
+	}
+}
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
@@ -190,7 +238,14 @@ console.assert(safe.unlock(rightKey) === sensitive);
 // the string is a valid email address and false if it is not.
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
-
+var Validator = function () {
+	this.email = function (inputEmail) {
+		if (inputEmail === email ) {
+			return true 
+		}
+		return false 
+	}
+}
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
